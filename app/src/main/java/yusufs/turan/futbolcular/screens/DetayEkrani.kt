@@ -37,19 +37,27 @@ fun DetayEkrani(futbolcu: Futbolcu) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Column {
+                Column(
+                    modifier = Modifier.weight(1f) // tam adı ve pozisyon için alanı paylaştır
+                ) {
                     Text(
                         text = futbolcu.tamAdi,
-                        fontSize = 22.sp,
+                        fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF222222)
+                        color = Color(0xFF222222),
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                     )
                     Text(
                         text = futbolcu.pozisyon,
-                        fontSize = 16.sp,
-                        color = Color.Gray
+                        fontSize = 15.sp,
+                        color = Color.Gray,
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                     )
                 }
+
+                Spacer(modifier = Modifier.width(8.dp)) // Araya boşluk ekleyelim
 
                 Box(
                     modifier = Modifier
@@ -67,7 +75,6 @@ fun DetayEkrani(futbolcu: Futbolcu) {
             }
 
             Spacer(modifier = Modifier.height(12.dp))
-
 
             Text(
                 text = "Yaş: ${futbolcu.yas} | Boy: ${futbolcu.boy} m | Kilo: ${futbolcu.kilo} kg",
@@ -94,19 +101,22 @@ fun DetayEkrani(futbolcu: Futbolcu) {
                     Text(
                         text = futbolcu.takim.takimAdi,
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                     )
                     Text(
                         text = futbolcu.takim.Lig,
                         fontSize = 14.sp,
                         color = Color.Gray,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                     )
                 }
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-
 
             Text(
                 text = "Piyasa Değeri: ${futbolcu.piyasaDegeri}",
@@ -116,6 +126,7 @@ fun DetayEkrani(futbolcu: Futbolcu) {
         }
     }
 }
+
 
 /*@Preview(showBackground = true)
 @Composable
