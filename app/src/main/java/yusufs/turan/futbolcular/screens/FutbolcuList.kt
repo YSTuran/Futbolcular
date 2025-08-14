@@ -3,11 +3,13 @@ package yusufs.turan.futbolcular.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,26 +20,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import yusufs.turan.futbolcular.model.Futbolcu
 import yusufs.turan.futbolcular.model.Team
 import yusufs.turan.futbolcular.ui.theme.FutbolcularTheme
 
 @Composable
-fun FutbolcuList(futbolList: List<Futbolcu>){
+fun FutbolcuList(futbolList: List<Futbolcu>, navController: NavController){
     LazyColumn (modifier = Modifier.fillMaxSize()
         .background(color = MaterialTheme.colorScheme.tertiaryContainer)
         .padding(2.dp)){
-        items(futbolList){
-          futbolcuRow(it)
+        itemsIndexed(futbolList){ index, futbolcu->
+          futbolcuRow(futbolcu = futbolcu, navController = navController, currentIndex = index)
         }
     }
 }
 
 
 @Composable
-fun futbolcuRow(futbolcu: Futbolcu){
-    Column (modifier = Modifier.fillMaxSize().background(color = MaterialTheme
-        .colorScheme.primaryContainer)
+fun futbolcuRow(futbolcu: Futbolcu, navController: NavController, currentIndex : Int){
+    Column (modifier = Modifier.fillMaxSize()
+        .background(color = MaterialTheme.colorScheme.primaryContainer)
+        .clickable {
+            navController.navigate("detay_ekrani/${currentIndex}")
+        }
         .border(BorderStroke(2.dp, Color.DarkGray))
         .padding(10.dp)){
         Text(futbolcu.futbolcuAdi+" ("+futbolcu.yas+")",

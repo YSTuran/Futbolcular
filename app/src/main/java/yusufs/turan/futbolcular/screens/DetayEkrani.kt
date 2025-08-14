@@ -18,7 +18,7 @@ import yusufs.turan.futbolcular.model.Futbolcu
 import yusufs.turan.futbolcular.model.Team
 
 @Composable
-fun FutbolcuCard(futbolcu: Futbolcu) {
+fun DetayEkrani(futbolcu: Futbolcu) {
     Card(
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(6.dp),
@@ -31,7 +31,7 @@ fun FutbolcuCard(futbolcu: Futbolcu) {
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            // Üst Kısım: İsim ve Pozisyon
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -117,9 +117,9 @@ fun FutbolcuCard(futbolcu: Futbolcu) {
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
-fun FutbolcuCardPreview() {
+fun DetayPreview() {
     val exampleFutbolcu = Futbolcu(
         id = 1,
         futbolcuAdi = "Arda Güler",
@@ -135,6 +135,6 @@ fun FutbolcuCardPreview() {
         piyasaDegeri = "€30M"
     )
     MaterialTheme {
-        FutbolcuCard(futbolcu = exampleFutbolcu)
+        DetayEkrani(futbolcu = exampleFutbolcu)
     }
-}
+}*/
